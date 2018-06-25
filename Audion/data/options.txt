@@ -1,0 +1,17 @@
+{
+  "volume": 0,
+  "performance": 6,
+  "activePlayers": {
+    "0": false,
+    "1": false,
+    "2": false,
+    "3": false
+  },
+  "log": false,
+  "profile": 0,
+  "FPS": 39,
+  "resolution": {
+    "width": 726,
+    "height": 642
+  }
+}
