@@ -72,7 +72,7 @@ public void guiSetup()
   canvas.textfont = loadFont("data/Uni0553-18.vlw");
   canvas.show(true);
 
-  profileB = canvas.new box(new Vec2(0.1*w, 0.1*h));
+  profileB = canvas.new box(new Vec2(0.3*w, 0.1*h));
   profileB.defaultColor = playerColor(p.profile);
 }
 
@@ -205,9 +205,20 @@ public void guiDraw()
     specieList.show();
     specieList.update();
     doneB.show();
-    if(randomName.action) textBoxN.text = generateName();
-    if(doneB.action) if(applyB.action) {p.p[p.profile] = new Player(uniName.text); loadScene(0);}
-    for(int i = 0; i < 4; i++) if(((gui.button) specieList.content.get(i)).action) {playerDisplayBox.defaultColor = playerColor(i); p.profile = i; specieList.opened = false; ((gui.button) specieList.content.get(i)).action = false; return;}
+    if(randomName.action) textBoxN.text = generateName(rand);
+
+    if(doneB.action) {p.p[p.profile] = new Player(textBoxN.text); actPlayer = p.p[p.profile]; loadScene(0); return;}
+
+    for(int i = 0; i < 4; i++) {
+      gui.button b = (gui.button) specieList.content.get(i);
+      if(b.action)
+      {
+        playerDisplayBox.defaultColor = playerColor(i);
+        p.profile = i; specieList.opened = false;
+        b.action = false; return;
+      }
+    }
+
   } else
   if(scene == 6) /*CREATING WORLD MENU*/ {
     uniName.show();
@@ -218,8 +229,8 @@ public void guiDraw()
     backB.show();
     applyB.show();
 
-    if(randomNameUn.action) uniName.text = generateName();
-    if(applyB.action) {p.w[p.universe] = new Universe(); loadScene(0);}
+    if(randomNameUn.action) uniName.text = generateName(rand);
+    if(applyB.action) {p.w[p.universe] = new Universe(rand.nextInt()); if(!seedUn.text.equals("Seed")) p.w[p.universe].seed(seedToInt(seedUn.text)); p.w[p.universe].generate(new Vec2(), 200, 200); loadScene(0);}
 
   }
 }
@@ -269,6 +280,9 @@ void loadScene(int i)
     button4 = null;
     button5 = null;
   }
+
+  if(profileB != null) profileB.defaultColor = playerColor(p.profile);
+  if(p.p[p.profile] != null) profileB.text = p.p[p.profile].nickName;
 
   if(i == 0) /*MAIN MENU*/
   {
@@ -432,7 +446,7 @@ void loadScene(int i)
   } else
   if(i == 6) /*CREATING WORLD MENU*/
   {
-    uniName = canvas.new textBox(new Vec2(0.7824429*w, 0.10669676*h), generateName());
+    uniName = canvas.new textBox(new Vec2(0.7824429*w, 0.10669676*h), generateName(rand));
     randomNameUn = canvas.new button(new Vec2(0.49791828*w, 0.07113118*h));
     seedUn = canvas.new textBox(new Vec2(0.7824429*w, 0.10669678*h), p.lang.find("Seed"));
     button4 = canvas.new button(new Vec2(0.2845247*w, 0.07113116*h));

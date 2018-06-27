@@ -413,12 +413,16 @@ class gui
 
     Vec2 pA = new Vec2(0, 0);
     Vec2 pB = new Vec2(0, 0);
+
+    String text;
     String id;
 
+    int textSize = 12;
     boolean mouseOnTop = false;
 
     color defaultColor;
     color strokeColor;
+    color textColor = black;
 
     box(Vec2 size) {
       pB = size;
@@ -448,6 +452,16 @@ class gui
         stroke(strokeColor);
         fill(defaultColor, mouseOnTop ? mouseDegrade : stableDegrade);
         rect(pA.x, pA.y, pB.x, pB.y);
+
+        if(text != null)
+        {
+          Vec2 pos = pA.copy().average(pB);
+          textAlign(CENTER);
+          fill(textColor);
+          textSize(textSize);
+          if(textfont != null) textFont(textfont);
+          text(text, pos.x, pos.y);
+        }
       }
 
     }

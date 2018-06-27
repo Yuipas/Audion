@@ -32,6 +32,7 @@ void setup() {
 
   actPlayer = p.p[p.profile];
   actUniverse = p.w[p.universe];
+
 }
 
 void reset()
@@ -67,6 +68,15 @@ void keyPressed() {
 
   if(key == 'e') {
     println("open inventory");
+  }
+
+  if(key == 'p') {
+    println(p.w[p.universe].systems.length());
+    for(int i = 0; i < p.w[p.universe].systems.length(); i++)
+    {
+      Universe.system ss = (Universe.system) p.w[p.universe].systems.get(i);
+      println(ss.position.x, ss.position.y);
+    }
   }
 }
 

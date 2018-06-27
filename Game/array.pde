@@ -48,7 +48,7 @@ class Array {
     return array[i];
   }
 
-  int get(Object ob) {
+  int indexOf(Object ob) {
     for(int i = 0; i < length(); i++) if(get(i) == ob) return i;
     return -1;
   }

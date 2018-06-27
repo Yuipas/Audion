@@ -13,9 +13,9 @@ class Vec2 {
     this.y = y;
   }
 
-  Vec2(Random r, float range) {
-    x = r.nextFloat(range);
-    y = r.nextFloat(range);
+  Vec2(Random r) {
+    x = r.nextFloat();
+    y = r.nextFloat();
   }
 
   Vec2(PVector temp) {
@@ -31,6 +31,7 @@ class Vec2 {
   Vec2() {
 
   }
+
 
   Vec2 copy() {
     return new Vec2(x, y);
@@ -195,4 +196,10 @@ class Vec2 {
   void ellip(float w, float h) {
     ellipse(x, y, w, h);
   }
+}
+
+Vec2 fromAngle(float angle) {
+  Vec2 ret = new Vec2();
+  ret.sincos(angle, 1);
+  return ret;
 }

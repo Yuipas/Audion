@@ -17,7 +17,7 @@ class preferences
   int frameRate = 40;
   float volume;
 
-  /***/
+  //represents the players which has been already created.
   boolean[] activePlayers = {false, false, false, false};
 
   Player[] p = new Player[4];
@@ -49,37 +49,6 @@ class preferences
     json.setJSONObject("resolution", resol);
 
     saveJSONObject(json, "data/options.txt");
-  }
-
-  void savePlayers()
-  {
-    JSONArray players = new JSONArray();
-
-    for(int i = 0; i < p.length; i++) {
-      JSONObject pl = new JSONObject();
-      Player ob = p[i];
-      while(ob == null && i < p.length) ob = p[i++];
-      pl.setString("nickName", ob.nickName);
-      pl.setFloat("life", ob.life);
-      pl.setFloat("x", ob.pos.x);
-      pl.setFloat("y", ob.pos.y);
-      pl.setInt("coins", ob.coins);
-
-      JSONArray ships = new JSONArray();
-      for(int j = 0; j < ob.ships.length(); j++) {
-
-        JSONObject sh = new JSONObject();
-        ship s = (ship) ob.ships.get(j);
-        sh.setString("name", s.name);
-        sh.setInt("maxComponents", s.maxComponents);
-        sh.setFloat("x", s.position.x);
-        sh.setFloat("y", s.position.y);
-        ships.setJSONObject(j, sh);
-      }
-      pl.setJSONArray("ships", ships);
-
-      players.setJSONObject(i, pl);
-    }
   }
 
   void load() {
@@ -192,9 +161,3 @@ class language {
 language load(String name, String directory) {
   return new language(name, loadStrings(directory));
 }
-
-/*
-
-jugar = p.lang.find("play"); //WHEN LANG = ESP
-
-*/

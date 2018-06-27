@@ -16,7 +16,7 @@ class ship {
 
   Array inventory = new Array();
 
-  ship() {name = generateName();}
+  ship() {name = generateName(rand);}
 
   void show() {
       image(getImage(), position.x, position.y);

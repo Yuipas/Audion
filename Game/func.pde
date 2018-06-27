@@ -2,7 +2,7 @@ import java.util.Random;
 
 Random rand = new Random();
 
-String[] Beginning = { "Kr", "Ca", "Ra", "Mrok", "Cru", "Ray", "Bre", "Zed", "Drak", "Mor", "Jag", "Mer", "Jar", "Mjol", "Zork", "Mad", "Cry", "Gre", "Zur", "Cire", Creo", "Azak", "Yu", "Azur", "Rei", "Cro", "Mar", "Luk"};
+String[] Beginning = { "Kr", "Ca", "Ra", "Mrok", "Cru", "Ray", "Bre", "Zed", "Drak", "Mor", "Jag", "Mer", "Jar", "Mjol", "Zork", "Mad", "Cry", "Gre", "Zur", "Cire", "Creo", "Azak", "Yu", "Azur", "Rei", "Cro", "Mar", "Luk"};
 
 String[] Middle = { "air", "ip", "", "ir", "mi", "sor", "mee", "clo", "red", "cra", "ark", "arc", "miri", "lori", "cres", "mur", "zer", "marac", "zoir", "slamar", "salmar", "urak"};
 
